@@ -25,8 +25,16 @@ export const Cart = ({ items, onClose, onRemoveItem, onUpdateQuantity }: CartPro
 
   const total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
+  const btcWalletAddress = "1MuCbBteMFrQpcXBNCftPRAwJ954LqZWjy";
+
   const handleBTCPayment = async () => {
     setIsProcessingPayment(true);
+    
+    // Show wallet address for payment
+    toast({
+      title: "Send Bitcoin Payment",
+      description: `Send ₿${total.toFixed(6)} to: ${btcWalletAddress}`,
+    });
     
     // Simulate Bitcoin payment processing
     try {
