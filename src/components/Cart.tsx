@@ -33,7 +33,7 @@ export const Cart = ({ items, onClose, onRemoveItem, onUpdateQuantity }: CartPro
     // Show wallet address for payment
     toast({
       title: "Send Bitcoin Payment",
-      description: `Send ₿${total.toFixed(6)} to: ${btcWalletAddress}`,
+      description: `Send equivalent of $${total.toFixed(2)} in BTC to: ${btcWalletAddress}`,
     });
     
     // Simulate Bitcoin payment processing
@@ -110,7 +110,7 @@ export const Cart = ({ items, onClose, onRemoveItem, onUpdateQuantity }: CartPro
                     
                     <div className="text-right ml-4">
                       <div className="font-mono font-semibold mb-2">
-                        ₿{(item.price * item.quantity).toFixed(6)}
+                        ${(item.price * item.quantity).toFixed(2)}
                       </div>
                       
                       {isPurchased ? (
@@ -161,7 +161,7 @@ export const Cart = ({ items, onClose, onRemoveItem, onUpdateQuantity }: CartPro
           <div className="space-y-4">
             <div className="flex justify-between items-center text-lg font-semibold">
               <span>Total:</span>
-              <span className="font-mono">₿{total.toFixed(6)}</span>
+              <span className="font-mono">${total.toFixed(2)}</span>
             </div>
 
             {completedPurchases.length === 0 && (

@@ -11,11 +11,15 @@ export interface Product {
   id: string;
   name: string;
   description: string;
-  price: number;
+  price: number; // in USD
   category: string;
-  size: string;
   format: string;
   records: number;
+  preview: string;
+  tags: string[];
+  lastUpdated: string;
+  source: string;
+  schema: string;
 }
 
 interface ProductTableProps {
@@ -99,8 +103,7 @@ export const ProductTable = ({ products, onAddToCart }: ProductTableProps) => {
                   <TableHead>Category</TableHead>
                   <TableHead>Format</TableHead>
                   <TableHead>Records</TableHead>
-                  <TableHead>Size</TableHead>
-                  <TableHead>Price (BTC)</TableHead>
+                  <TableHead>Price (USD)</TableHead>
                   <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
               </TableHeader>
@@ -108,10 +111,17 @@ export const ProductTable = ({ products, onAddToCart }: ProductTableProps) => {
                 {filteredProducts.map((product) => (
                   <TableRow key={product.id}>
                     <TableCell>
-                      <div>
-                        <div className="font-medium">{product.name}</div>
-                        <div className="text-sm text-muted-foreground">
-                          {product.description}
+                      <div className="flex gap-3 items-start">
+                        <img 
+                          src={product.preview} 
+                          alt={`${product.name} preview`}
+                          className="w-16 h-12 object-cover rounded border"
+                        />
+                        <div>
+                          <div className="font-medium">{product.name}</div>
+                          <div className="text-sm text-muted-foreground">
+                            {product.description}
+                          </div>
                         </div>
                       </div>
                     </TableCell>
@@ -122,8 +132,7 @@ export const ProductTable = ({ products, onAddToCart }: ProductTableProps) => {
                       <Badge variant="secondary">{product.format}</Badge>
                     </TableCell>
                     <TableCell>{product.records.toLocaleString()}</TableCell>
-                    <TableCell>{product.size}</TableCell>
-                    <TableCell className="font-mono">₿{product.price}</TableCell>
+                    <TableCell className="font-mono">${product.price.toFixed(2)}</TableCell>
                     <TableCell className="text-right">
                       <div className="flex gap-2 justify-end">
                         <Button variant="outline" size="sm">

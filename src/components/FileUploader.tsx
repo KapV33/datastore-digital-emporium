@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Upload, FileText, X, CheckCircle } from "lucide-react";
+import { Upload, FileText, X, CheckCircle, Download } from "lucide-react";
 import { Product } from "./ProductTable";
 import { useToast } from "@/hooks/use-toast";
 
@@ -95,11 +95,15 @@ export const FileUploader = ({ onProductsAdded, onClose }: FileUploaderProps) =>
         id: row.id || `uploaded-${Date.now()}-${index}`,
         name: row.name || row.title || `Database ${index + 1}`,
         description: row.description || row.desc || "No description provided",
-        price: parseFloat(row.price) || 0.001,
+        price: parseFloat(row.price) || 99.99,
         category: row.category || "General",
-        size: row.size || "Unknown",
         format: row.format || "CSV",
         records: parseInt(row.records) || 0,
+        preview: row.preview || "https://via.placeholder.com/400x300/3b82f6/ffffff?text=Database+Preview",
+        tags: row.tags ? row.tags.split(' ') : ["database"],
+        lastUpdated: new Date().toISOString().split('T')[0],
+        source: row.source || "User Upload",
+        schema: row.schema || "No schema provided"
       }));
 
       onProductsAdded(products);
@@ -129,6 +133,22 @@ export const FileUploader = ({ onProductsAdded, onClose }: FileUploaderProps) =>
       </div>
 
       <div className="space-y-6">
+        <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <h3 className="text-sm font-semibold text-blue-800 mb-2">📋 Required CSV/XLSX Format</h3>
+          <p className="text-xs text-blue-700 mb-2">Your file must include these columns:</p>
+          <code className="text-xs bg-white p-2 rounded border block overflow-x-auto">
+            name, description, category, records, format, price, preview, tags, source, schema
+          </code>
+          <a 
+            href="/example-stock-upload.csv" 
+            download="example-stock-upload.csv"
+            className="inline-flex items-center gap-1 mt-2 text-xs text-blue-600 hover:text-blue-800 underline"
+          >
+            <Download className="h-3 w-3" />
+            Download Example CSV
+          </a>
+        </div>
+
         {/* File Upload Area */}
         <div
           {...getRootProps()}

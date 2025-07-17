@@ -1,4 +1,5 @@
 import { useState } from "react";
+import databasePreview from "@/assets/database-preview.jpg";
 import { ShopHeader } from "@/components/ShopHeader";
 import { ProductTable, Product } from "@/components/ProductTable";
 import { FileUploader } from "@/components/FileUploader";
@@ -15,61 +16,85 @@ const sampleProducts: Product[] = [
     id: "1",
     name: "E-commerce Customer Database",
     description: "Comprehensive customer data with purchase history, demographics, and behavior patterns",
-    price: 0.0045,
+    price: 199.99,
     category: "E-commerce",
-    size: "2.1 GB",
     format: "CSV",
-    records: 1250000
+    records: 1250000,
+    preview: databasePreview,
+    tags: ["customers", "e-commerce", "analytics"],
+    lastUpdated: "2024-01-15",
+    source: "Global retailers",
+    schema: "customer_id, email, first_name, last_name, age, gender, location, total_spent, last_purchase_date, preferred_categories"
   },
   {
     id: "2", 
     name: "Financial Markets Dataset",
     description: "Historical stock prices, trading volumes, and market indicators from 2010-2024",
-    price: 0.0089,
+    price: 599.99,
     category: "Finance",
-    size: "5.4 GB", 
     format: "JSON",
-    records: 3400000
+    records: 3400000,
+    preview: databasePreview,
+    tags: ["stocks", "finance", "trading"],
+    lastUpdated: "2024-01-18",
+    source: "Financial exchanges",
+    schema: "symbol, company_name, date, open_price, high_price, low_price, close_price, volume, market_cap"
   },
   {
     id: "3",
     name: "Social Media Analytics",
     description: "Anonymized social media posts, engagement metrics, and sentiment analysis data",
-    price: 0.0032,
+    price: 149.99,
     category: "Social Media",
-    size: "1.8 GB",
     format: "CSV",
-    records: 890000
+    records: 890000,
+    preview: databasePreview,
+    tags: ["social-media", "analytics", "sentiment"],
+    lastUpdated: "2024-01-12",
+    source: "Social platforms",
+    schema: "post_id, platform, user_id, content, engagement_score, sentiment, timestamp, hashtags"
   },
   {
     id: "4",
     name: "Real Estate Listings Database",
     description: "Property listings with prices, locations, features, and market trends",
-    price: 0.0067,
+    price: 249.99,
     category: "Real Estate",
-    size: "3.2 GB",
     format: "XLSX",
-    records: 750000
+    records: 750000,
+    preview: databasePreview,
+    tags: ["properties", "real-estate", "housing"],
+    lastUpdated: "2024-01-16",
+    source: "Property listings",
+    schema: "property_id, address, city, state, zip_code, price, bedrooms, bathrooms, square_feet, property_type, year_built"
   },
   {
     id: "5",
     name: "Healthcare Research Data",
     description: "Clinical trial data, patient outcomes, and medical device performance metrics",
-    price: 0.0156,
+    price: 349.99,
     category: "Healthcare",
-    size: "8.7 GB",
     format: "JSON",
-    records: 2100000
+    records: 2100000,
+    preview: databasePreview,
+    tags: ["healthcare", "medical", "research"],
+    lastUpdated: "2024-01-10",
+    source: "Medical institutions",
+    schema: "patient_id, age_group, gender, diagnosis_codes, treatment_type, outcome, duration, insurance_type"
   },
   {
     id: "6",
     name: "Cryptocurrency Trading Data",
     description: "Bitcoin, Ethereum, and altcoin trading data with order books and price movements",
-    price: 0.0098,
+    price: 179.99,
     category: "Cryptocurrency",
-    size: "4.6 GB",
     format: "CSV",
-    records: 1890000
+    records: 1890000,
+    preview: databasePreview,
+    tags: ["crypto", "trading", "blockchain"],
+    lastUpdated: "2024-01-14",
+    source: "Crypto exchanges",
+    schema: "symbol, timestamp, open, high, low, close, volume, market_cap, circulating_supply"
   }
 ];
 
